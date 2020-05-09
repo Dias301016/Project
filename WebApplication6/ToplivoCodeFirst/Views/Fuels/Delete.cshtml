@@ -1,0 +1,41 @@
+﻿@model ToplivoCodeFirst.Models.Fuel
+
+@{
+    ViewBag.Title = "Удалить вид топлива";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы уверены, что хотите выполнить эту операцию?</h3>
+<div>
+    <h4>Fuel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelDensity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelDensity)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,69 @@
+﻿@model PagedCollection<Tank>
+@using ToplivoCodeFirst.Models
+@using ToplivoCodeFirst.Helpers
+@{
+    ViewBag.Title = "Емкости";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Емкости топливной базы</h2>
+
+<p>
+    @Html.ActionLink("Добавить емкость", "Create")
+</p>
+@using (Html.BeginForm("Index", "Tanks", FormMethod.Get))
+{ 
+   <fieldset>
+        Наименование емкости:        
+       @Html.TextBox("SearchString", Model.PageInfo.SearchString ?? "")
+       @Html.Hidden("PageNumber", Model.PageInfo.PageNumber)
+        <input type="submit" value="Найти" />
+    </fieldset>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PagedItems.FirstOrDefault().TankType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PagedItems.FirstOrDefault().TankWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PagedItems.FirstOrDefault().TankVolume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PagedItems.FirstOrDefault().TankMaterial)
+        </th>
+
+        <th></th>
+    </tr>
+   
+
+@foreach (var item in Model.PagedItems) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TankType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TankWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TankVolume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TankMaterial)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Подробнее", "Details", new { id = item.TankID })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.TankID })
+            @Html.ActionLink("Удалить", "Delete", new { id=item.TankID })
+        </td>
+    </tr>
+}
+    
+</table>
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { PageNumber= x, SearchString = Model.PageInfo.SearchString }))
+</div>

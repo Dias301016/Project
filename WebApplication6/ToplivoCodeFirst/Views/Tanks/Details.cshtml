@@ -1,0 +1,62 @@
+﻿@model Tank
+@using ToplivoCodeFirst.Models
+@{
+    ViewBag.Title = "Подробно Емкость";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Просмотр параметров емкости</h2>
+
+<div>
+<table border="0">
+    <tr>
+        <td>
+            <img src="@Model.TankPicture" alt="Фотография отсутствует" width="250" height="250">
+
+        </td>
+        <td>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TankType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TankType)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TankWeight)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TankWeight)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TankVolume)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TankVolume)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TankMaterial)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TankMaterial)
+                </dd>
+
+
+            </dl>
+        </td>
+    </tr>
+
+</table>
+    
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.TankID }) 
+    @Html.ActionLink("Возврат", "Details", new { id= -1})
+</p>
