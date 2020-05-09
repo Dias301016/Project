@@ -1,8 +1,10 @@
 # Done with Balgynbek Duisen
 1.3 models
 	* many to many
+	
 	* one to many
-  All models,controllers with Crud actiom
+ 
+ All models,controllers with Crud actiom
   Data stored in database
 3.Authorization and registratiom
 
